@@ -4,8 +4,22 @@
   "description": "yacs!: yet another clipbiard service",
   "main": "server.js",
   "scripts": {
+    "start": "npm run build:live",
+    "build:live": "nodemon --exec ./node_modules/.bin/ts-node -- ./src/server.ts",
+    "dev": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.2",
+    "nedb": "^1.8.0",
+    "nodemon": "^1.11.0"
+  },
+  "devDependencies": {
+    "@types/node": "^7.0.12",
+    "nodeman": "^1.1.2",
+    "ts-node": "^3.0.2",
+    "typescript": "^2.2.2"
+  }
 }
