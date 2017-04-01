@@ -62,23 +62,21 @@ class Data {
 
 Data.init();
 
-module.exports = {
-    Data,
-    clip: function({ input = "" } = {}) {
+export class api {
+    public clip({input = "" } = {}){
         Data.insert(input);
         return {success: true};
-    },
+    }
 
-    paste: function() {
+    public paste() {
         var d = Data.local;
         console.log("d: " + d);
         var z = {"paste": d};
         console.log("z: " + z);
         return z;
-    },
+    }
 
-    search: function({from = Branch.Local} = {}) {}
-};
-
-
-
+    public search({from = Branch.Local} = {})
+    {
+    }
+}
