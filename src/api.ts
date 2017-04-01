@@ -7,7 +7,7 @@ class Branch {
     constructor() {
     }
 
-    static get Local() : string{
+    static Local() : string{
         return "";
     }
 }
@@ -36,15 +36,13 @@ class Data {
         }
     }
 
-    static get local() {
+    static local(callback) {
         console.log("Requesting with: " + Data._currentMax);
         var dataToBeReturned = undefined;
         Data._db.find({index: Data._currentMax}).exec(function (err, doc) {
                 console.log("got the doc " + doc);
-                dataToBeReturned =  doc[0].data;
+                callback(doc[0].data);
         });
-        console.log("returning");
-        return dataToBeReturned;
     }
 
     static insert(input) {
@@ -68,15 +66,11 @@ export class api {
         return {success: true};
     }
 
-    public paste() {
-        var d = Data.local;
-        console.log("d: " + d);
-        var z = {"paste": d};
-        console.log("z: " + z);
-        return z;
+    public paste(callback) {
+        Data.local(callback);
     }
 
-    public search({from = Branch.Local} = {})
+    public search({from = Branch.Local()} = {})
     {
     }
 }
